@@ -1,4 +1,4 @@
-# WE Registration Form
+# WE Analyze Demo
 
 A Simple Node/Express App - Know the Wealth of People that Sign Up Online
 
