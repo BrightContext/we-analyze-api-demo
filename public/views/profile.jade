@@ -7,7 +7,28 @@ html
       .jumbotron
         p="WE API Response: "+fullname+" in "+city+", "+state
         h1="Net Worth "+networth
-          .small=" Gift Capacity "+gift_capacity
+        
       .row
-        .col-xs-8.col-xs-offset-2
-          pre=we_response
+        .col-xs-4
+          p="Marketo Speaker List"
+          strong=marketo_speaker_list
+        .col-xs-4
+          p="Marketo Employees"
+          strong=marketo_employees
+        .col-xs-4
+          p="Top 100 Venture Capitalists"
+          strong=marketo_vc_list
+      .row
+        .col-xs-3
+          p="High Net Worth"
+          strong=marketo_high_nw
+        .col-xs-3
+          p="Tesla Car Owners"
+          strong=marketo_tesla
+        .col-xs-3
+          p="CEOs in the US"
+          strong=marketo_ceo
+        .col-xs-3
+          p="CMOs in the US"
+          strong=marketo_cmo
+      //-     

@@ -5,7 +5,20 @@ var express = require('express'),
   util = require('util'),
   // We don't recommend dumping api data into global variables
   // but for demo purposes:
-  we_response
+  we_response,
+  apikey = 'APIKey YOUR_API_KEY_HERE',
+  match_request, i,
+  models = [
+    'marketo-speaker-list',
+    'marketo-employees',
+    'marketo-vc-list',
+    'marketo-high-nw',
+    'marketo-tesla',
+    'marketo-ceo',
+    'marketo-cmo'
+  ],
+  scores = {}
+;
 
 function log (title, obj) {
   console.log('::: ' + title + ' :::')
@@ -38,7 +51,7 @@ app.post('/register', function (req, res) {
 
   // Build the input for the find_one match request
   // that we're sending to WealthEngine
-  var match_request = {
+  match_request = {
     last_name: req.body.last_name,
     first_name: req.body.first_name,
     address_line1: req.body.address_line1,
@@ -47,14 +60,14 @@ app.post('/register', function (req, res) {
     zip: req.body.zip
   }
 
-  log('Address Match Request', match_request)
+  // log('Address Match Request', match_request)
 
   // Posting to the WE API
   request.post({
     // Sandbox API Environment (Random Fake Data)
-    url: 'https://api-sandbox.wealthengine.com/v1/profile/find_one/by_address/basic',
+    // url: 'https://api-sandbox.wealthengine.com/v1/profile/find_one/by_address/basic',
     // Production API Environment (Real Data)
-    // url: 'https://api.wealthengine.com/v1/profile/find_one/by_address/basic',
+    url: 'https://api.wealthengine.com/v1/profile/find_one/by_address/basic',
 
     // Setting this flag serializes the body input as JSON
     // and adds Content-type: application/json header.
@@ -62,13 +75,13 @@ app.post('/register', function (req, res) {
     json: true,
     headers: {
       // 'Content-Type': 'application/json',
-      'Authorization': 'APIKey YOUR_API_KEY'
+      'Authorization': apikey
     },
     body: match_request
   }, function (error, response, payload) {
     log('WE API Status:', response.statusCode)
-    log('Headers:', JSON.stringify(response.headers))
-    log('Response:', payload)
+    // log('Headers:', JSON.stringify(response.headers))
+    // log('Response:', payload)
 
     // Do whatever you need to do with the data we give you here
     we_response = payload
@@ -84,8 +97,34 @@ app.post('/register', function (req, res) {
 })
 
 // When the API succeeds, show profile.jade
-app.get('/profile', function (req, res) {
-  res.render('profile', {
+app.get('/profile', function (req, res, next) {
+
+    for (i = 0; i < models.length; i++) {
+
+      match_request.model = models[i];
+      // console.log(match_request);
+
+      request.post({
+        url: 'https://api.wealthengine.com/v1/score/score_one/by_address',
+        json: true,
+        headers: {
+          'Authorization': apikey,
+        },
+        body: match_request
+      }, function callback(error, httpResponse, resbody) {
+        if (error) {
+          return console.log('model request failed');
+        }
+        var score = resbody.profile.scores[0];
+        scores[score.model] = score.score;
+        console.log(scores);
+      })
+    }
+    next()
+  },
+
+  function(req, res) {res.render('profile', {
+
     title: 'Profile for ' + we_response.identity.first_name + ' '
       + we_response.identity.last_name,
 
@@ -98,19 +137,31 @@ app.get('/profile', function (req, res) {
 
     networth: we_response.wealth.networth.text,
 
-    gift_capacity: we_response.giving.gift_capacity.text,
+    marketo_speaker_list: scores['marketo-speaker-list'],
+    marketo_employees: scores['marketo-employees'],
+    marketo_vc_list: scores['marketo-vc-list'],
+    marketo_high_nw: scores['marketo-high-nw'],
+    marketo_tesla: scores['marketo-tesla'],
+    marketo_ceo: scores['marketo-ceo'],
+    marketo_cmo: scores['marketo-cmo'],
 
     we_response: JSON.stringify(we_response, null, 2)
 
+    });
+  });
+
+
+
+  // When the API fails, show error.jade
+  app.get('/error', function (req, res) {
+    res.render('error')
   })
-})
 
-// When the API fails, show error.jade
-app.get('/error', function (req, res) {
-  res.render('error')
-})
 
+
+////////////////////////////////////////////////////////////////////////////////
 // Setting up the server
+////////////////////////////////////////////////////////////////////////////////
 var server = app.listen(3000, function () {
 
   console.log('Server Ready: http://localhost:' + server.address().port)
