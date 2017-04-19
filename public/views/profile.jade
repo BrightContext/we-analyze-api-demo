@@ -2,33 +2,65 @@ html
   head
     title!= title
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css")
+    link(href="https://fonts.googleapis.com/css?family=News+Cycle:400,700" rel="stylesheet") 
+    link(rel="stylesheet" href="../styles/style.css")
+
   body
-    .container
+    .container.top-container
+      img.center-block(src="../images/we-logo-2x.png", height="80")
+      h1='Analyzer'
       .jumbotron
-        p="WE API Response: "+fullname+" in "+city+", "+state
-        h1="Net Worth "+networth
-        
+        p.text-center="Look-Alike Scores For: "
+          b=fullname
+          span=" in "+city+", "+state
+        h1=marketo_speaker_list  
+          small=" Marketo Conference Speaker List"
+        div.progress
+          div(class='progress-bar', style='width:'+marketo_speaker_list+'%')
       .row
         .col-xs-4
-          p="Marketo Speaker List"
-          strong=marketo_speaker_list
+          p
+            strong=marketo_employees
+            span=" Marketo Employees"
+          div.progress
+            div(class='progress-bar', style='width:'+marketo_employees+'%')
+
         .col-xs-4
-          p="Marketo Employees"
-          strong=marketo_employees
+          p
+            strong=marketo_vc_list 
+            span=" Top 100 Venture Capitalists"
+          div.progress
+            div(class='progress-bar', style='width:'+marketo_vc_list+'%')
+   
         .col-xs-4
-          p="Top 100 Venture Capitalists"
-          strong=marketo_vc_list
+          p
+            strong=marketo_high_nw
+            span=" High Net Worth"
+          div.progress
+            div(class='progress-bar', style='width:'+marketo_high_nw+'%')
+
       .row
-        .col-xs-3
-          p="High Net Worth"
-          strong=marketo_high_nw
-        .col-xs-3
-          p="Tesla Car Owners"
-          strong=marketo_tesla
-        .col-xs-3
-          p="CEOs in the US"
-          strong=marketo_ceo
-        .col-xs-3
-          p="CMOs in the US"
-          strong=marketo_cmo
-      //-     
+        .col-xs-4
+          p
+            strong=marketo_tesla
+            span=" Tesla Car Owners"
+          div.progress
+            div(class='progress-bar', style='width:'+marketo_tesla+'%')
+
+        .col-xs-4
+          p
+            strong=marketo_ceo
+            span=" CEOs in the US"
+          div.progress
+            div(class='progress-bar', style='width:'+marketo_ceo+'%')
+
+        .col-xs-4
+          p
+            strong=marketo_cmo
+            span=" CMOs in the US"
+          div.progress
+            div(class='progress-bar', style='width:'+marketo_cmo+'%')
+    .container-fluid(style="height: 100%; position: relative; background: #ddd")
+      h1="Marketo Screenshots"
+
+       

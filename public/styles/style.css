@@ -1,0 +1,49 @@
+* {
+  font-family: 'News Cycle', sans-serif;
+}
+
+strong {
+  text-align: center;
+  font-size: 64px;
+}
+
+.jumbotron,
+.container-fluid .jumbotron,
+.container .jumbotron {
+  padding-top: 0!important;
+  padding-left:0!important;
+  padding-right: 0!important;
+  background: transparent;
+  padding-bottom: 0!important;
+}
+
+.container.top-container {
+  padding-top: 40px;
+  height: 100%;
+  position: relative;
+}
+
+h1 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 24px;
+  padding-top: 10px;
+  margin-top: 0;
+}
+
+.btn.btn-primary {
+  background: #6dbe2c;
+  border: none;
+  border-radius; 0!important;
+  padding-bottom: 10px;
+  font-size: 24px;
+}
+
+.progress .progress-bar {
+  background: #6dbe2c;
+}
+.progress {
+  height: 5px;
+}
