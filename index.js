@@ -2,6 +2,7 @@ var express = require('express'),
   bodyParser = require('body-parser'),
   request = require('request'),
   app = express(),
+  async = require('async'),
   util = require('util'),
   // We don't recommend dumping api data into global variables
   // but for demo purposes:
@@ -96,31 +97,72 @@ app.post('/register', function (req, res) {
   })
 })
 
-// When the API succeeds, show profile.jade
-app.get('/profile', function (req, res, next) {
 
-    for (i = 0; i < models.length; i++) {
+function getScores(models, onCompletion) {
 
-      match_request.model = models[i];
-      // console.log(match_request);
+  var counter = 0;
 
-      request.post({
+  async.each(models, function(model, callback) {
+
+    counter++;
+
+    match_request.model = model;
+
+    console.log('********* MATCH REQUEST MODEL *********');
+    console.log(match_request.model);
+    console.log('********* COUNTER IN LOOP *********');
+    console.log(counter);
+
+    request.post({
         url: 'https://api.wealthengine.com/v1/score/score_one/by_address',
         json: true,
         headers: {
           'Authorization': apikey,
         },
         body: match_request
-      }, function callback(error, httpResponse, resbody) {
+      },
+      function(error, httpResponse, resbody) {
         if (error) {
+
           return console.log('model request failed');
+
+        } else {
+          counter--;
+
+          console.log('********* COUNTER / RESBODY *********');
+          console.log(counter);
+          console.log(resbody);
+
+          var score = resbody.profile.scores[0].score;
+          var thismodel = resbody.profile.scores[0].model;
+
+          scores[thismodel] = score;
+
+          console.log('********* Model/SCORE *********');
+          callback(console.log(model + " " + score));
+
+          if (counter == 0) {
+            onCompletion();
+          }
+
         }
-        var score = resbody.profile.scores[0];
-        scores[score.model] = score.score;
-        console.log(scores);
       })
-    }
-    next()
+    }, function(err) {
+      if (err) {
+        console.log('a score api call failed to process.');
+      } else {
+        console.log('all api calls run successfully.');
+      }
+    })
+
+}
+
+
+// When the API succeeds, show profile.jade
+app.get('/profile', function (req, res, next) {
+
+    getScores(models, next);
+
   },
 
   function(req, res) {res.render('profile', {
