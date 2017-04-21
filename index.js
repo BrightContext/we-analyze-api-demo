@@ -19,7 +19,7 @@ var express = require('express'),
     'marketo-cmo'
   ],
   scores = {},
-  var wwwhisper = require('connect-wwwhisper')
+  wwwhisper = require('connect-wwwhisper')
 ;
 
 app.use(wwwhisper());
