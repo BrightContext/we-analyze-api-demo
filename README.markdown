@@ -1,6 +1,6 @@
 # WE Analyze Demo
 
-A Simple Node/Express App - Know the Wealth of People that Sign Up Online
+A Simple Node/Express App - See what you look like
 
 This app reads a person's name and address from a form POST and sends it to the WE API.
 The WE API then responds with wealth data about that person.

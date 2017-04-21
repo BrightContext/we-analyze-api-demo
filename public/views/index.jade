@@ -7,31 +7,45 @@ html
 
   body
     .container.top-container
-      img.center-block(src="../images/we-logo-2x.png", height="80")
-      h1='Analyzer'
+      img.center-block(src="../images/we-mkto-gears.png", width="180")
       .jumbotron
-        p.text-center='How similar do you look to other groups at this conference?'
+        p.text-center='How similar are you to the Marketo Summit Speakers?'
+          span.text-center(style="display: block")='As well as other high-profile groups?'
       .row
         .col-xs-4.col-xs-offset-4
           .row
             form.center-block(method="post" action="/register")
               .form-group
-                label.control-label(for="first_name")='First Name'
+                label.control-label(for="first_name")='First Name*'
                 input.form-control.first_name(type="text" id="first_name" name="first_name" placeholder="First Name")
               .form-group
-                label.control-label(for="last_name")='Last Name'
+                label.control-label(for="last_name")='Last Name*'
                 input.form-control.first_name(type="text" id="last_name" name="last_name" placeholder="Last Name")
               .form-group
-                label.control-label(for="address")='Address'
+                label.control-label(for="address")='Address*'
                 input.form-control.address(type="text" id="address" name="address_line1" placeholder="Address")
               .form-group
-                label.control-label(for="city")='City'
+                label.control-label(for="city")='City*'
                 input.form-control.city(type="text" id="city" name="city" placeholder="City")
               .form-group
-                label.control-label(for="state")='State'
+                label.control-label(for="state")='State*'
                 input.form-control.state(type="text" id="state" name="state" placeholder="State")
               .form-group
-                label.control-label(for="zip")='Zip'
+                label.control-label(for="zip")='Zip*'
                 input.form-control.zip(type="text" id="zip" name="zip" placeholder="Zip")
               .form-group
                   button#register-btn.btn.btn-primary(type="submit" style="width:100%")='See My Scores'
+        .col-xs-4
+          .aside 
+            h2="Audiences for Comparison"
+            ul.bulleted-list
+              li="Marketo Conference Speaker List"
+              li="Marketo Employees"
+              li="Top 100 Venture Capitalists"
+              li="High Net Worth"
+              li="Tesla Car Owners"
+              li="CEOs in the US"
+              li="CMOs in the US"
+      p.text-center='We will not be storing or using information submitted for any marketing purposes.'
+
+script(src="https://use.fontawesome.com/8ae1c480b5.js")

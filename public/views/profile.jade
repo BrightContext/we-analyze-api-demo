@@ -7,60 +7,107 @@ html
 
   body
     .container.top-container
-      img.center-block(src="../images/we-logo-2x.png", height="80")
-      h1='Analyzer'
+      img.center-block(src="../images/we-mkto-gears.png", width="180")
       .jumbotron
         p.text-center="Look-Alike Scores For: "
           b=fullname
           span=" in "+city+", "+state
-        h1=marketo_speaker_list  
-          small=" Marketo Conference Speaker List"
-        div.progress
-          div(class='progress-bar', style='width:'+marketo_speaker_list+'%')
-      .row
-        .col-xs-4
-          p
-            strong=marketo_employees
-            span=" Marketo Employees"
+        strong.main-score
+          span="Your Score"
+          h1=marketo_speaker_list  
           div.progress
-            div(class='progress-bar', style='width:'+marketo_employees+'%')
-
-        .col-xs-4
-          p
-            strong=marketo_vc_list 
-            span=" Top 100 Venture Capitalists"
-          div.progress
-            div(class='progress-bar', style='width:'+marketo_vc_list+'%')
-   
-        .col-xs-4
-          p
-            strong=marketo_high_nw
-            span=" High Net Worth"
-          div.progress
-            div(class='progress-bar', style='width:'+marketo_high_nw+'%')
+            div(class='progress-bar', style='width:'+marketo_speaker_list+'%')
+          div.ticks
+            span.pull-left='0'
+            span.pull-right='100'  
+          span="Marketo Conference Speaker List "
+            i.fa.fa-info-circle(data-toggle="popover", data-trigger="hover", data-content="Based off the 2017 Marketo Summit Speaker list", data-placement="right")
 
       .row
         .col-xs-4
-          p
-            strong=marketo_tesla
-            span=" Tesla Car Owners"
-          div.progress
-            div(class='progress-bar', style='width:'+marketo_tesla+'%')
+          strong
+            span="Your Score"
+            span.score=marketo_employees
+            div.progress
+              div(class='progress-bar', style='width:'+marketo_employees+'%')
+            div.ticks
+              span.pull-left='0'
+              span.pull-right='100'    
+            span=" Marketo Employees "
+              i.fa.fa-info-circle(data-toggle="popover", data-trigger="hover", data-content="Based off a list of Marketo employees pulled from WealthEngine's organizational data", data-placement="right")
 
         .col-xs-4
-          p
-            strong=marketo_ceo
-            span=" CEOs in the US"
-          div.progress
-            div(class='progress-bar', style='width:'+marketo_ceo+'%')
+          strong
+            span="Your Score"
+            span.score=marketo_vc_list 
+            div.progress
+              div(class='progress-bar', style='width:'+marketo_vc_list+'%')
+            div.ticks
+              span.pull-left='0'
+              span.pull-right='100'
+            span=" Top 100 Venture Capitalists "
+              i.fa.fa-info-circle(data-toggle="popover", data-trigger="hover", data-content="Based off of a list of the top 100 venture capitalists in 2017", data-placement="right")
 
         .col-xs-4
-          p
-            strong=marketo_cmo
-            span=" CMOs in the US"
-          div.progress
-            div(class='progress-bar', style='width:'+marketo_cmo+'%')
-    .container-fluid(style="height: 100%; position: relative; background: #ddd")
+          strong
+            span="Your Score"
+            span.score=marketo_high_nw
+            div.progress
+              div(class='progress-bar', style='width:'+marketo_high_nw+'%')
+            div.ticks
+              span.pull-left='0'
+              span.pull-right='100'  
+            span=" High Net Worth "
+              i.fa.fa-info-circle(data-toggle="popover", data-trigger="hover", data-content="Based off of a list pulled from WealthEngine of individuals with a net worth >$100M", data-placement="right")
+
+      .row
+        .col-xs-4
+          strong
+            span="Your Score"
+            span.score=marketo_tesla
+            div.progress
+              div(class='progress-bar', style='width:'+marketo_tesla+'%')
+            div.ticks
+              span.pull-left='0'
+              span.pull-right='100'
+            span=" Tesla Car Owners "
+              i.fa.fa-info-circle(data-toggle="popover", data-trigger="hover", data-content="Based off a list pulled from WealthEngine of individuals who own a Tesla", data-placement="right")
+
+        .col-xs-4
+          strong
+            span="Your Score"
+            span.score=marketo_ceo
+            div.progress
+              div(class='progress-bar', style='width:'+marketo_ceo+'%')
+            div.ticks
+              span.pull-left='0'
+              span.pull-right='100'
+            span=" CEOs in the US "
+              i.fa.fa-info-circle(data-toggle="popover", data-trigger="hover", data-content="Based of a list pulled from WealthEngine's organizational data of CEOs in the US", data-placement="right")
+
+        .col-xs-4
+          strong
+            span="Your Score"
+            span.score=marketo_cmo
+            div.progress
+              div(class='progress-bar', style='width:'+marketo_cmo+'%')
+            div.ticks
+              span.pull-left='0'
+              span.pull-right='100'
+            span=" CMOs in the US "
+              i.fa.fa-info-circle(data-toggle="popover", data-trigger="hover", data-content="Based off a list pulled from WealthEngine's organizational data of CMOs in the US", data-placement="right")
+
+    .container-fluid(style="height: 100%; position: relative; padding:80px 0;")
+      img.center-block(src="../images/we-mkto-gears.png", width="260")
+      h1="And here's how the data looks within Marketo..."
+
+    .container-fluid(style="height: 100%; position: relative; border-top: 2px solid #eee;")
       h1="Marketo Screenshots"
+      
 
-       
+script(src="https://use.fontawesome.com/8ae1c480b5.js")
+script(src="https://code.jquery.com/jquery-3.2.1.min.js",
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=",
+        crossorigin="anonymous")
+script(src="../scripts/bootstrap.min.js")
+script(src="../scripts/script.js")
