@@ -7,7 +7,7 @@ var express = require('express'),
   // We don't recommend dumping api data into global variables
   // but for demo purposes:
   we_response,
-  apikey = 'APIKey YOUR_API_KEY_HERE',
+  apikey = 'APIKey '+process.env.WE_API_KEY, // heroku environment variable
   match_request, i,
   models = [
     'marketo-speaker-list',
@@ -18,9 +18,11 @@ var express = require('express'),
     'marketo-ceo',
     'marketo-cmo'
   ],
-  scores = {}
+  scores = {},
+  var wwwhisper = require('connect-wwwhisper')
 ;
 
+app.use(wwwhisper());
 function log (title, obj) {
   console.log('::: ' + title + ' :::')
   console.log(util.inspect(obj, { depth: null, colors: true }))
