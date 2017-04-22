@@ -49,8 +49,8 @@ app.get('/', function (req, res) {
 // Here, the form data is available as req.body,
 // and we use that data to build a new request to the WE API
 app.post('/register', function (req, res) {
-  log('Form Inputs', req.body)
-  log('Registration POST Status:', res.statusCode)
+  console.log('Form Inputs', req.body)
+  console.log('Registration POST Status:', res.statusCode)
 
   // Build the input for the find_one match request
   // that we're sending to WealthEngine
@@ -82,7 +82,7 @@ app.post('/register', function (req, res) {
     },
     body: match_request
   }, function (error, response, payload) {
-    log('WE API Status:', response.statusCode)
+    console.log('WE API Status:', response.statusCode)
     // log('Headers:', JSON.stringify(response.headers))
     // log('Response:', payload)
 
@@ -174,6 +174,10 @@ app.get('/profile', function (req, res, next) {
 
     fullname: we_response.identity.first_name + ' '
       + we_response.identity.last_name,
+
+    first_name: we_response.identity.first_name,
+
+    last_name: we_response.identity.last_name,
 
     city: we_response.locations[0].address.city,
 

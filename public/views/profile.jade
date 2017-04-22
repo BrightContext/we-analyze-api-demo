@@ -57,7 +57,7 @@ html
             div.ticks
               span.pull-left='0'
               span.pull-right='100'  
-            span=" High Net Worth "
+            span=" High Net Worth Individuals "
               i.fa.fa-info-circle(data-toggle="popover", data-trigger="hover", data-content="Based off of a list pulled from WealthEngine of individuals with a net worth >$100M", data-placement="right")
 
       .row
@@ -101,8 +101,41 @@ html
       img.center-block(src="../images/we-mkto-gears.png", width="260")
       h1="And here's how the data looks within Marketo..."
 
-    .container-fluid(style="height: 100%; position: relative; border-top: 2px solid #eee;")
-      h1="Marketo Screenshots"
+    .container-fluid(style="background: #fff; height: 1500px; position: relative; border-top: 2px solid #eee;")
+      img.center-block(src="../images/marketo-lead-record.png")
+      div.marketo-lead-record
+        ul.person-info
+          li.firstname
+            span
+            span.score=first_name
+          li
+            span
+            span
+          li.last_name
+            span
+            span.score=last_name
+        ul.we-analyze-score-records
+          li
+            span="Marketo Speakers:"
+            span.score=marketo_speaker_list
+          li
+            span="Marketo Employees:"
+            span.score=marketo_employees
+          li
+            span="Top 100 Venture Capitalists:"
+            span.score=marketo_vc_list
+          li
+            span="High Net Worth Individuals:"
+            span.score=marketo_high_nw
+          li
+            span="Tesla Car Owners:"
+            span.score=marketo_telsa
+          li
+            span="CEOs in the US:"
+            span.score=marketo_ceo
+          li
+            span="CMOs in the US:"
+            span.score=marketo_cmo
       
 
 script(src="https://use.fontawesome.com/8ae1c480b5.js")

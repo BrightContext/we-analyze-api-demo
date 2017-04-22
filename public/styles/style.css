@@ -1,4 +1,4 @@
-* {
+body {
   font-family: 'News Cycle', sans-serif;
 }
 
@@ -106,4 +106,38 @@ h1 {
 
 .popover-content {
   font-size: 12px;
+}
+
+.marketo-lead-record ul {
+  position: absolute;
+  z-index: 1;
+  font-family: verdana, sans-serif!important;
+  font-size: 13.2px;
+  color: #444;
+  left: 170px;
+  list-style: none;
+}
+
+.person-info {
+  top: 575px;
+}
+
+.we-analyze-score-records {
+  top: 1040px;
+}
+
+.marketo-lead-record li {
+  clear: both;
+}
+
+.marketo-lead-record ul span {
+  width: 216px;
+  float: left;
+  display: block;
+  line-height: 30px;
+  height: 30px;
+}
+
+.marketo-lead-record ul span.score {
+  float: right;
 }
