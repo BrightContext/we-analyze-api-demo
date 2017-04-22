@@ -1,8 +1,5 @@
 body {
   font-family: 'News Cycle', sans-serif;
-}
-
-body {
   background: #efefef;
 }
 
@@ -106,6 +103,7 @@ h1 {
 
 .popover-content {
   font-size: 12px;
+  font-family: 'News Cycle', sans-serif;
 }
 
 .marketo-lead-record ul {
