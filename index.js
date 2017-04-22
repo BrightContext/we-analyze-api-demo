@@ -18,16 +18,15 @@ var express = require('express'),
     'marketo-ceo',
     'marketo-cmo'
   ],
-  scores = {}
-  // ,
-  // wwwhisper = require('connect-wwwhisper')
+  scores = {},
+  wwwhisper = require('connect-wwwhisper')
 ;
 
-// app.use(wwwhisper());
-// function log (title, obj) {
-//   console.log('::: ' + title + ' :::')
-//   console.log(util.inspect(obj, { depth: null, colors: true }))
-// }
+app.use(wwwhisper());
+function log (title, obj) {
+  console.log('::: ' + title + ' :::')
+  console.log(util.inspect(obj, { depth: null, colors: true }))
+}
 
 // Setting up the templating engine
 app.set('view engine', 'jade')
