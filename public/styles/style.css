@@ -133,14 +133,14 @@ h1 {
   font-size: 24px;
 }
 
-.progress .progress-bar {
-  background: #6dbe2c;
-  transition: width 2s;
+.progress {
+  height: 20px;
+  margin-bottom: 5px;
 }
 
-.progress {
-  height: 5px;
-  margin-bottom: 5px;
+.progress .progress-bar {
+  background: #706eb3;
+  transition: width 2s;
 }
 
 .row {

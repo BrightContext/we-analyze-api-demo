@@ -16,13 +16,14 @@ html
           i.fa.fa-microphone.icon
           span="Your Score"
           h1=marketo_speaker_list  
-          div.progress
-            div(class='progress-bar', style='width:'+marketo_speaker_list+'%')
-          div.ticks
-            span.pull-left='0'
-            span.pull-right='100'  
-          span="Marketo Conference Speaker List "
-            i.fa.fa-info-circle(data-toggle="popover", data-trigger="hover", data-content="Based off the 2017 Marketo Summit Speaker list", data-placement="right")
+          div(style="width: 400px; margin: 0 auto;")
+            div.progress
+              div(class='progress-bar', style='width:'+marketo_speaker_list+'%')
+            div.ticks
+              span.pull-left='0'
+              span.pull-right='100'  
+            span="Marketo Conference Speaker List "
+              i.fa.fa-info-circle(data-toggle="popover", data-trigger="hover", data-content="Based off the 2017 Marketo Summit Speaker list", data-placement="right")
 
       .row
         .col-xs-4
