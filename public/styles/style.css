@@ -7,6 +7,29 @@ body {
   padding: 20px;
 }
 
+.aside ul li {
+  line-height: 28px;
+  height: 28px;
+  list-style: none;
+}
+
+.aside ul li .marketo-icon {
+  color: #6dbe4c;
+  width: 24px;
+  height: 15px;
+  background: url(../images/marketo-logo.png) no-repeat;
+  background-size: 20px 15px;
+  display: inline-block;
+}
+
+.aside .fa {
+  color: #6dbe4c;
+  width: 24px;
+  text-align: center;
+  font-size: 18px;
+  display: inline-block;
+}
+
 p span.text-center {
   font-size: 18px;
 }
@@ -16,6 +39,10 @@ strong h1 {
   padding-top: 0px;
 }
 
+.well {
+  background: #fff;
+}
+
 strong {
   text-align: center;
   padding:10px 20px;
@@ -23,6 +50,7 @@ strong {
   margin: 0 auto;
   width: 100%;
   display: block;
+  position: relative;
 }
 
 strong span {
@@ -41,6 +69,24 @@ strong.main-score {
 
 strong.main-score small {
   display: block;
+}
+
+strong i.icon {
+  font-size: 32px;
+  color: #6dbe4c;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+strong .marketo-icon {
+  background: url(../images/marketo-logo.png);
+  background-size: 40px 30px;
+  width: 40px;
+  height: 30px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
 }
 
 .ticks {

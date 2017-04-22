@@ -2,8 +2,23 @@ html
   head
     title!= title
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css")
+    link(href="https://fonts.googleapis.com/css?family=News+Cycle:400,700" rel="stylesheet") 
+    link(rel="stylesheet" href="../styles/style.css")
+
   body
-    .container
+    .container.top-container
+      img.center-block(src="../images/we-mkto-gears.png", width="180")
       .jumbotron
-        h1="OOPS ..."
-          div.small="WE could not find the person you're looking for. Please confirm you entered the correct information"
+        p.text-center="WE couldn't find a match."
+        p.text-center="..."
+      .row
+        div.center-block(style="width: 400px;")
+          div.well
+            h1.text-center="Don't Panic."
+            ul
+              li="Did you fill out all the required fields?"
+              li="Make sure everything is entered correctly."
+              li="Make sure everything is spelled correctly."
+              li="If that doesn't work, try a past address."
+
+          .btn.btn-primary.center-block(onclick="history.back()")="Try Again"
