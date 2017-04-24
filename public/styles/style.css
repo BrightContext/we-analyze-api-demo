@@ -152,13 +152,21 @@ h1 {
   font-family: 'News Cycle', sans-serif;
 }
 
+.marketo-lead-record {
+  width: 1466px;
+  height: 1371px;
+  top: -1371px;
+  position: relative;
+  margin: 0 auto;
+}
+
 .marketo-lead-record ul {
   position: absolute;
   z-index: 1;
   font-family: verdana, sans-serif!important;
   font-size: 13.2px;
   color: #444;
-  left: 170px;
+  left: 68px;
   list-style: none;
 }
 

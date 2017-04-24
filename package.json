@@ -1,7 +1,7 @@
 {
-  "name": "we-registration-form",
+  "name": "we-analyze-api-demo",
   "version": "1.0.0",
-  "description": "A Simple Node/Express App - Know the Wealth of People that Sign Up Online",
+  "description": "A Simple Node/Express App - Score Yourself against Analyze Model",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
